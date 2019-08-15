@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'Manage Fights'|trans }}
+{% endblock %}
+
+{% block headline %}
+    {{ 'Manage Fights'|trans }}
+{% endblock %}
+
+{% block body %}
+    {% if paginator.results is not empty %}
+        <div id="endFightModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{ 'Choose a Fight Winner'|trans }}</h5>
+            
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form method="post" id="endFightForm">
+                            <input type="hidden" name="_csrf_token" class="csrf-token">
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="winner" id="winnerParticipant" value="0" checked>
+                                <label class="form-check-label" for="winnerParticipant" id="winnerParticipantLabel"></label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="winner" id="winnerOpponent" value="1">
+                                <label class="form-check-label" for="winnerOpponent" id="winnerOpponentLabel"></label>
+                            </div>
+
+                            <div class="text-center mt-3">
+                                <button class="btn btn-primary" type="submit">
+                                    {{ 'Submit'|trans }}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">{{ 'Fight'|trans }}</th>
+                    <th scope="col">{{ 'Start time'|trans }}</th>
+                    <th scope="col">{{ 'Actions'|trans }}</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for fight in paginator.results %}
+                    <tr>
+                        <th scope="row" class="align-middle">{{ fight.id }}</th>
+
+                        <td class="align-middle">
+                            <a href="{{ path('fight_bets', {'id': fight.id }) }}">
+                                {{ fight.participant }} {{ 'vs'|trans }} {{ fight.opponent }}
+                            </a>
+                        </td>
+
+                        <td class="align-middle">{{ fight.startTime|date('Y-m-d H:i') }}</td>
+
+                        <td>
+                            {% include 'partial/action.html.twig' with {'route': path('fight_status', {'id': fight.id, 'status': constant('STATUS_CREATED', fight) }), 'status': constant('STATUS_CREATED', fight), 'buttonName': 'Reset Fight'} %}
+                            {% include 'partial/action.html.twig' with {'route': path('fight_status', {'id': fight.id, 'status': constant('STATUS_STARTED', fight) }), 'status': constant('STATUS_STARTED', fight), 'buttonName': 'Start Fight'} %}
+                            {% include 'partial/action.html.twig' with {'route': path('fight_status', {'id': fight.id, 'status': constant('STATUS_ENDED', fight) }), 'status': constant('STATUS_ENDED', fight), 'buttonName': 'End Fight'} %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% include 'partial/paginator.html.twig' with {'label': 'Fighting Pages', 'route': 'fights_admin_paginated'} %}
+    {% else %}
+        <div class="alert alert-dark" role="alert">
+            {{ 'The fights are not created!'|trans }}
+        </div>
+    {% endif %}
+{% endblock %}

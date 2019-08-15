@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="GAP0lQY" resname="%count% fights were successfully imported!">
+        <source>%count% fights were successfully imported!</source>
+        <target>%count% fights were successfully imported!</target>
+      </trans-unit>
+      <trans-unit id="hfpGogT" resname="Betting Page">
+        <source>Betting Page</source>
+        <target>Betting Page</target>
+      </trans-unit>
+      <trans-unit id="OnhpU4i" resname="Home">
+        <source>Home</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="axI9fjW" resname="Add Fight">
+        <source>Add Fight</source>
+        <target>Add Fight</target>
+      </trans-unit>
+      <trans-unit id="0kxm8n2" resname="Import Fights">
+        <source>Import Fights</source>
+        <target>Import Fights</target>
+      </trans-unit>
+      <trans-unit id="9k0_JLz" resname="Betting Top">
+        <source>Betting Top</source>
+        <target>Betting Top</target>
+      </trans-unit>
+      <trans-unit id="w2rHpPn" resname="My Bets">
+        <source>My Bets</source>
+        <target>My Bets</target>
+      </trans-unit>
+      <trans-unit id="u3I07BJ" resname="Register">
+        <source>Register</source>
+        <target>Register</target>
+      </trans-unit>
+      <trans-unit id="XiuOllA" resname="Sign up">
+        <source>Sign up</source>
+        <target>Sign up</target>
+      </trans-unit>
+      <trans-unit id="47ienTP" resname="Username">
+        <source>Username</source>
+        <target>Username</target>
+      </trans-unit>
+      <trans-unit id="d96r4jj" resname="Points">
+        <source>Points</source>
+        <target>Points</target>
+      </trans-unit>
+      <trans-unit id="E8942Vt" resname="The list could not be generated.">
+        <source>The list could not be generated.</source>
+        <target>The list could not be generated.</target>
+      </trans-unit>
+      <trans-unit id="i6Y0Fjn" resname="Fight &quot;%participant%&quot; Vs &quot;%opponent%&quot; Bets">
+        <source>Fight "%participant%" Vs "%opponent%" Bets</source>
+        <target>Fight "%participant%" Vs "%opponent%" Bets</target>
+      </trans-unit>
+      <trans-unit id="Raqsun6" resname="Option">
+        <source>Option</source>
+        <target>Option</target>
+      </trans-unit>
+      <trans-unit id="2VCCou5" resname="Author">
+        <source>Author</source>
+        <target>Author</target>
+      </trans-unit>
+      <trans-unit id="omRPUxM" resname="No bets have been placed!">
+        <source>No bets have been placed!</source>
+        <target>No bets have been placed!</target>
+      </trans-unit>
+      <trans-unit id="FMGPR.Y" resname="New Fight">
+        <source>New Fight</source>
+        <target>New Fight</target>
+      </trans-unit>
+      <trans-unit id="uD_v0ZX" resname="Import fights">
+        <source>Import Fights</source>
+        <target>Import Fights</target>
+      </trans-unit>
+      <trans-unit id="HvFCyCE" resname="Fight">
+        <source>Fight</source>
+        <target>Fight</target>
+      </trans-unit>
+      <trans-unit id="ur6d2oU" resname="Start time">
+        <source>Start time</source>
+        <target>Start time</target>
+      </trans-unit>
+      <trans-unit id="AtXxlvD" resname="Who will win?">
+        <source>Who will win?</source>
+        <target>Who will win?</target>
+      </trans-unit>
+      <trans-unit id="79gUxLV" resname="Versus">
+        <source>Versus</source>
+        <target>Versus</target>
+      </trans-unit>
+      <trans-unit id="8TBVnw5" resname="vs">
+        <source>vs</source>
+        <target>vs</target>
+      </trans-unit>
+      <trans-unit id="37VjxeA" resname="The fight has already begun!">
+        <source>The fight has already begun!</source>
+        <target>The fight has already begun!</target>
+      </trans-unit>
+      <trans-unit id="dQVgwAz" resname="The fight has already ended! The winner is &quot;%winner%&quot;">
+        <source>The fight has already ended! The winner is "%winner%"</source>
+        <target>The fight has already ended! The winner is "%winner%"</target>
+      </trans-unit>
+      <trans-unit id="tf8xrh1" resname="The fights are not created!">
+        <source>The fights are not created!</source>
+        <target>The fights are not created!</target>
+      </trans-unit>
+      <trans-unit id="wYmEDPf" resname="Log in">
+        <source>Log in</source>
+        <target>Log in</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="_TJnqhH" resname="Remember me">
+        <source>Remember me</source>
+        <target>Remember me</target>
+      </trans-unit>
+      <trans-unit id="pXsIpIC" resname="Previous">
+        <source>Previous</source>
+        <target>Previous</target>
+      </trans-unit>
+      <trans-unit id="EJAaHDL" resname="(current)">
+        <source>(current)</source>
+        <target>(current)</target>
+      </trans-unit>
+      <trans-unit id="H.V6Kdf" resname="Next">
+        <source>Next</source>
+        <target>Next</target>
+      </trans-unit>
+      <trans-unit id="0ltKCS7" resname="No bets have been placed!">
+        <source>No bets have been placed!</source>
+        <target>No bets have been placed!</target>
+      </trans-unit>
+      <trans-unit id="nnCTSPW" resname="Create Your Account">
+        <source>Create Your Account</source>
+        <target>Create Your Account</target>
+      </trans-unit>
+      <trans-unit id="VhG9L3A" resname="Fighting Pages">
+        <source>Fighting Pages</source>
+        <target>Fighting Pages</target>
+      </trans-unit>
+      <trans-unit id="c9FkbTV" resname="Your bet has been added!">
+        <source>Your bet has been added!</source>
+        <target>Your bet has been added!</target>
+      </trans-unit>
+      <trans-unit id="aZ22XR3" resname="Your bet has been updated!">
+        <source>Your bet has been updated!</source>
+        <target>Your bet has been updated!</target>
+      </trans-unit>
+      <trans-unit id="m86GS9h" resname="Participant name">
+        <source>Participant name</source>
+        <target>Participant name</target>
+      </trans-unit>
+      <trans-unit id="Eb668qd" resname="Opponent name">
+        <source>Opponent name</source>
+        <target>Opponent name</target>
+      </trans-unit>
+      <trans-unit id="KhejZ38" resname="Starts On">
+        <source>Starts On</source>
+        <target>Starts On</target>
+      </trans-unit>
+      <trans-unit id="42zMvYD" resname="Create">
+        <source>Create</source>
+        <target>Create</target>
+      </trans-unit>
+      <trans-unit id="B72xJ35" resname="File">
+        <source>File</source>
+        <target>File</target>
+      </trans-unit>
+      <trans-unit id="34S93th" resname="Import File">
+        <source>Import File</source>
+        <target>Import File</target>
+      </trans-unit>
+      <trans-unit id="4F4gUtC" resname="Actions">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="ACLtU5J" resname="Reset Fight">
+        <source>Reset Fight</source>
+        <target>Reset Fight</target>
+      </trans-unit>
+      <trans-unit id="MN6uzY8" resname="Start Fight">
+        <source>Start Fight</source>
+        <target>Start Fight</target>
+      </trans-unit>
+      <trans-unit id="xwB4ayw" resname="End Fight">
+        <source>End Fight</source>
+        <target>End Fight</target>
+      </trans-unit>
+      <trans-unit id="ApC8826" resname="Manage Fights">
+        <source>Manage Fights</source>
+        <target>Manage Fights</target>
+      </trans-unit>
+      <trans-unit id="emMY49Q" resname="Fight status was updated successfully!">
+        <source>Fight status was updated successfully!</source>
+        <target>Fight status was updated successfully!</target>
+      </trans-unit>
+      <trans-unit id="h5C5A3g" resname="Choose a Fight Winner">
+        <source>Choose a Fight Winner</source>
+        <target>Choose a Fight Winner</target>
+      </trans-unit>
+      <trans-unit id="s4Ce2YC" resname="Submit">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+      <trans-unit id="bW74TuR" resname="Logout">
+        <source>Logout</source>
+        <target>Logout</target>
+      </trans-unit>
+      <trans-unit id="mPT9bEg" resname="Repeat password">
+        <source>Repeat password</source>
+        <target>Repeat password</target>
+      </trans-unit>
+      <trans-unit id="t9W57ut" resname="I have read and agree to the terms of service.">
+        <source>I have read and agree to the terms of service.</source>
+        <target>I have read and agree to the terms of service.</target>
+      </trans-unit>
+      <trans-unit id="7vZnKUy" resname="The password fields must match.">
+        <source>The password fields must match.</source>
+        <target>The password fields must match.</target>
+      </trans-unit>
+      <trans-unit id="U6Lrmvw" resname="Please enter a password">
+        <source>Please enter a password</source>
+        <target>Please enter a password</target>
+      </trans-unit>
+      <trans-unit id="9pkKkxp" resname="You should agree to our terms.">
+        <source>You should agree to our terms.</source>
+        <target>You should agree to our terms.</target>
+      </trans-unit>
+      <trans-unit id="Aaf7A2y" resname="You haven't made any bets!">
+        <source>You haven't made any bets!</source>
+        <target>You haven't made any bets!</target>
+      </trans-unit>
+      <trans-unit id="P6EVtH5" resname="Fight ID">
+        <source>Fight ID</source>
+        <target>Fight ID</target>
+      </trans-unit>
+      <trans-unit id="f9HCLrT" resname="The fight was successfully created!">
+        <source>The fight was successfully created!</source>
+        <target>The fight was successfully created!</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

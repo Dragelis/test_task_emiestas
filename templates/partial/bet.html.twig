@@ -1,0 +1,17 @@
+<form method="post" action="{{ path('fight_bet', { id: fight.id, option: option }) }}" class="btn-group">
+    <input type="hidden" name="_csrf_token"
+        value="{{ csrf_token('bet') }}"
+    >
+
+    {% if className is same as('btn-outline-secondary') %}
+        <input type="hidden" class="btn">
+    {% endif %}
+
+    <button class="btn {{ className ~ (bet is defined and bet.option == option ? ' active' : '') }}" type="submit">
+        {{ className is same as('btn-outline-primary') ? fight.participant : fight.opponent }}
+    </button>
+
+    {% if className is same as('btn-outline-primary') %}
+        <input type="hidden" class="btn">
+    {% endif %}
+</form>

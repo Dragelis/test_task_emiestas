@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'Log in'|trans }}
+{% endblock %}
+
+{% block headline %}
+    {{ 'Log in'|trans }}
+{% endblock %}
+
+{% block body %}
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <div class="form-group">
+            <label for="inputUsername">{{ 'Username'|trans }}</label>
+            <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" placeholder="{{ 'Username'|trans }}" required autofocus>
+        </div>
+
+        <input type="hidden" name="_csrf_token"
+            value="{{ csrf_token('authenticate') }}"
+        >
+
+        <div class="form-group">
+            <label for="inputPassword">{{ 'Password'|trans }}</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="{{ 'Password'|trans }}" name="plainPassword" required>
+        </div>
+
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="rememberCheck" name="_remember_me">
+            <label class="form-check-label" for="rememberCheck">{{ 'Remember me'|trans }}</label>
+        </div>
+
+        <div class="form-group">
+            <a href="{{ path('app_register') }}">
+                {{ 'Sign up'|trans }}
+            </a>
+        </div>
+
+        <button class="btn btn-lg btn-primary" type="submit">
+            {{ 'Log in'|trans }}
+        </button>
+    </form>
+{% endblock %}

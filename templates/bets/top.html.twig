@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'Betting Top'|trans }}
+{% endblock %}
+
+{% block headline %}
+    {{ 'Betting Top'|trans }}
+{% endblock %}
+
+{% block body %}
+    {% if paginator.results is not empty %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">{{ 'Username'|trans }}</th>
+                    <th scope="col">{{ 'Points'|trans }}</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for user in paginator.results %}
+                    <tr{{ app.user is same as(user) ? ' class="table-info"' : '' }}>
+                        <th scope="row">{{ (paginator.currentPage - 1) * constant('PAGE_SIZE', paginator) + loop.index }}</th>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.points }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% include 'partial/paginator.html.twig' with {'label': 'Betting Top Pages', 'route': 'bets_top_paginated'} %}
+    {% else %}
+        <div class="alert alert-dark" role="alert">
+            {{ 'The list could not be generated.'|trans }}
+        </div>
+    {% endif %}
+{% endblock %}

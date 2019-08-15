@@ -1,0 +1,24 @@
+{% if fight.status is not same as(status) %}
+    {% if status is same as(constant('STATUS_ENDED', fight)) %}
+        <form method="post" action="{{ route }}" class="btn-group end-action-form" data-participant="{{ fight.participant }}" data-opponent="{{ fight.opponent }}">
+    {% else %}
+        <form method="post" action="{{ route }}" class="btn-group">
+    {% endif %}
+        <input type="hidden" name="_csrf_token" class="csrf-token"
+            value="{{ csrf_token('admin') }}"
+        >
+
+        {% if firstButtonDisplayed is not defined %}
+            <input type="hidden" class="btn">
+            {% set firstButtonDisplayed = true %}
+        {% endif %}
+
+        <button class="btn btn-outline-info" type="submit">
+            {{ buttonName|trans }}
+        </button>
+
+        {% if firstButtonDisplayed is defined %}
+            <input type="hidden" class="btn">
+        {% endif %}
+    </form>
+{% endif %}

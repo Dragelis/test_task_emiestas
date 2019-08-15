@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>
+            {% block title %}
+                {{ 'Betting Page'|trans }}
+            {% endblock %}
+        </title>
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+
+    <body>
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+            <h5 class="my-0 mr-md-auto font-weight-normal">
+                {{ 'Betting Page'|trans }}
+            </h5>
+
+            <nav class="my-2 my-md-0 mr-md-3">
+                <a class="p-2 text-dark" href="{{ path('fights_index') }}">
+                    {{ 'Home'|trans }}
+                </a>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="p-2 text-dark" href="{{ path('fights_admin') }}">
+                        {{ 'Manage Fights'|trans }}
+                    </a>
+
+                    <a class="p-2 text-dark" href="{{ path('fight_new') }}">
+                        {{ 'Add Fight'|trans }}
+                    </a>
+
+                    <a class="p-2 text-dark" href="{{ path('fights_import') }}">
+                        {{ 'Import Fights'|trans }}
+                    </a>
+                {% endif %}
+
+                {% if app.user %}
+                    <a class="p-2 text-dark" href="{{ path('bets_top') }}">
+                        {{ 'Betting Top'|trans }}
+                    </a>
+
+                    <a class="p-2 text-dark" href="{{ path('bets_index') }}">
+                        {{ 'My Bets'|trans }}
+                    </a>
+                {% else %}
+                    <a class="p-2 text-dark" href="{{ path('app_register') }}">
+                        {{ 'Register'|trans }}
+                    </a>
+                {% endif %}
+            </nav>
+
+            {% if app.user %}
+                <a class="btn btn-outline-primary" href="{{ path('app_logout') }}">
+                    {{ 'Logout'|trans }}
+                </a>
+            {% else %}
+                <a class="btn btn-outline-primary" href="{{ path('app_login') }}">
+                    {{ 'Sign up'|trans }}
+                </a>
+            {% endif %}
+        </div>
+
+        <main role="main">
+            <div class="container">
+                <h2 class="mt-5 mb-4">
+                    {% block headline %}
+                        {{ 'Betting Page'|trans }}
+                    {% endblock %}
+                </h2>
+
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message|trans }}
+                    </div>
+                {% endfor %}
+
+                {% block body %}{% endblock %}
+            </div>
+        </main>
+
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+            <p class="mb-1">&copy; 2019 Karolis Petrauskas</p>
+        </footer>
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </body>
+</html>

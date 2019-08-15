@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if paginator.results is not empty %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">{{ 'Fight'|trans }}</th>
+                    <th scope="col">{{ 'Start time'|trans }}</th>
+                    <th scope="col">{{ 'Who will win?'|trans }}</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for fight in paginator.results %}
+                    <tr>
+                        <th scope="row" class="align-middle">{{ fight.id }}</th>
+
+                        <td class="align-middle">
+                            {% if fight.status is same as(constant('STATUS_CREATED', fight)) %}
+                                {{ fight.participant }} <abbr title="{{ 'Versus'|trans }}">{{ 'vs'|trans }}</abbr> {{ fight.opponent }}
+                            {% else %}
+                                <a href="{{ path('fight_bets', {'id': fight.id }) }}">
+                                    {{ fight.participant }} {{ 'vs'|trans }} {{ fight.opponent }}
+                                </a>
+                            {% endif %}
+                        </td>
+
+                        <td class="align-middle">{{ fight.startTime|date('Y-m-d H:i') }}</td>
+
+                        <td>
+                            {% if fight.status is same as(constant('STATUS_CREATED', fight)) %}
+                                {% include 'partial/bet.html.twig' with {'option': optionParticipantValue, 'className': 'btn-outline-primary'} %}
+                                {% include 'partial/bet.html.twig' with {'option': optionOpponentValue, 'className': 'btn-outline-secondary'} %}
+                            {% elseif fight.status is same as(constant('STATUS_STARTED', fight)) %}
+                                {{ 'The fight has already begun!'|trans }}
+                            {% else %}
+                                {{ 'The fight has already ended! The winner is "%winner%"'|trans({'%winner%': fight.winner == optionParticipantValue ? fight.participant : fight.opponent}) }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% include 'partial/paginator.html.twig' with {'label': 'Fighting Pages', 'route': 'fights_index_paginated'} %}
+    {% else %}
+        <div class="alert alert-dark" role="alert">
+            {{ 'The fights are not created!'|trans }}
+        </div>
+    {% endif %}
+{% endblock %}

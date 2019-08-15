@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'Fight "%participant%" Vs "%opponent%" Bets'|trans({'%participant%': fight.participant|capitalize, '%opponent%': fight.opponent|capitalize}) }}
+{% endblock %}
+
+{% block headline %}
+    {{ 'Fight "%participant%" Vs "%opponent%" Bets'|trans({'%participant%': fight.participant|capitalize, '%opponent%': fight.opponent|capitalize}) }}
+{% endblock %}
+
+{% block body %}
+    {% if paginator.results is not empty %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">{{ 'Option'|trans }}</th>
+                    <th scope="col">{{ 'Author'|trans }}</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for bet in paginator.results %}
+                    <tr>
+                        <th scope="row">{{ bet.id }}</th>
+                        <td>{{ bet.option == constant('OPTION_PARTICIPANT', bet) ? bet.fight.participant : bet.fight.opponent }}</td>
+                        <td>{{ bet.user.username }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% include 'partial/paginator.html.twig' with {'label': 'Fighting bet pages', 'route': 'fight_bets_paginated'} %}
+    {% else %}
+        <div class="alert alert-dark" role="alert">
+            {{ 'No bets have been placed!'|trans }}
+        </div>
+    {% endif %}
+{% endblock %}

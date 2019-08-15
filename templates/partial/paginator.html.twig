@@ -1,0 +1,33 @@
+{% if paginator.hasToPaginate %}
+    <nav aria-label="{{ label|trans }}">
+        <ul class="pagination">
+            {% if paginator.hasPreviousPage %}
+                <li class="page-item">
+                    <a href="{{ path(route, {page: paginator.previousPage}) }}" class="page-link">
+                        {{ 'Previous'|trans }}
+                    </a>
+                </li>
+            {% endif %}
+
+            {% for i in 1..paginator.lastPage %}
+                {% if i == paginator.currentPage %}
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="#">{{ i }} <span class="sr-only">{{ '(current)'|trans }}</span></a>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a href="{{ path(route, {page: i}) }}" class="page-link">{{ i }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if paginator.hasNextPage %}
+                <li class="page-item">
+                    <a href="{{ path(route, {page: paginator.nextPage}) }}" class="page-link">
+                        {{ 'Next'|trans }}
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endif %}

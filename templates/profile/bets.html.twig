@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'My Bets'|trans }}
+{% endblock %}
+
+{% block headline %}
+    {{ 'My Bets'|trans }}
+{% endblock %}
+
+{% block body %}
+    {% if paginator.results is not empty %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">{{ 'Fight ID'|trans }}</th>
+                    <th scope="col">{{ 'Fight'|trans }}</th>
+                    <th scope="col">{{ 'Start time'|trans }}</th>
+                    <th scope="col">{{ 'Who will win?'|trans }}</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for bet in paginator.results %}
+                    <tr>
+                        <th scope="row" class="align-middle">{{ bet.fight.id }}</th>
+
+                        <td class="align-middle">{{ bet.fight.participant }} <abbr title="{{ 'Versus'|trans }}">{{ 'vs'|trans }}</abbr> {{ bet.fight.opponent }}</td>
+
+                        <td class="align-middle">{{ bet.fight.startTime|date('Y-m-d H:i') }}</td>
+
+                        <td>
+                            {% if bet.fight.status is same as(constant('STATUS_CREATED', bet.fight)) %}
+                                {% include 'partial/bet.html.twig' with {'fight': bet.fight, 'option': constant('OPTION_PARTICIPANT', bet), 'className': 'btn-outline-primary'} %}
+                                {% include 'partial/bet.html.twig' with {'fight': bet.fight, 'option': constant('OPTION_OPPONENT', bet), 'className': 'btn-outline-secondary'} %}
+                            {% elseif bet.fight.status is same as(constant('STATUS_STARTED', bet.fight)) %}
+                                {{ 'The fight has already begun!'|trans }}
+                            {% else %}
+                                {{ 'The fight has already ended! The winner is "%winner%"'|trans({'%winner%': bet.fight.winner == constant('OPTION_PARTICIPANT', bet) ? bet.fight.participant : bet.fight.opponent}) }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% include 'partial/paginator.html.twig' with {'label': 'User Bet Pages', 'route': 'bets_index_paginated'} %}
+    {% else %}
+        <div class="alert alert-dark" role="alert">
+            {{ "You haven't made any bets!"|trans }}
+        </div>
+    {% endif %}
+{% endblock %}

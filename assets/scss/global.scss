@@ -1,0 +1,5 @@
+@import "~bootstrap/scss/bootstrap";
+
+form.btn-group + form.btn-group {
+    margin-left: -4px;
+}
