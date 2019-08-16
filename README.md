@@ -29,7 +29,6 @@ Reikalingi NodeJS, Yarn, Docker ir docker-compose programiniai paketai.
     ```bash
     $ docker-compose exec php bash
     $ composer install
-    $ sf4 doctrine:database:create
     $ sf4 doctrine:schema:update --force
     $ composer dump-env prod
     $ exit

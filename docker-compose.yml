@@ -1,34 +1,40 @@
-version: '3.7'
+version: "3.7"
 
 services:
     mysql:
-        image: mysql
+        image: mysql:latest
+        restart: unless-stopped
         ports:
             - "3306:3306"
         environment:
-            MYSQL_ROOT_PASSWORD:
+            MYSQL_ROOT_PASSWORD: symfony_root_password
             MYSQL_DATABASE: symfony_test
-            MYSQL_USER: root
-            MYSQL_PASSWORD:
+            MYSQL_USER: symfony_test_user
+            MYSQL_PASSWORD: symfony_test_password
+        command: "mysqld --default-authentication-plugin=mysql_native_password"
     php:
         build:
             context: docker/php7-fpm
             args:
                 TIMEZONE: ${DEFAULT_TIMEZONE}
+        restart: unless-stopped
         ports:
             - "9000:9000"
         volumes:
             - ${SYMFONY_APP_PATH}:/var/www/symfony
             - ./docker/logs/symfony:/var/www/symfony/app/logs
-        links:
+        depends_on:
             - mysql
-        extra_hosts:
-            - "symfony.local:127.0.0.1"
     nginx:
         build: docker/nginx
+        restart: unless-stopped
         ports:
             - "80:80"
-        links:
+        depends_on:
             - php
         volumes:
+            - ${SYMFONY_APP_PATH}:/var/www/symfony
             - ./docker/logs/nginx/:/var/log/nginx
+        extra_hosts:
+            - "symfony.local:127.0.0.1"
+

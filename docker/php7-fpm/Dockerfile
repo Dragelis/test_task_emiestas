@@ -4,7 +4,9 @@ ARG TIMEZONE
 RUN apt-get update && apt-get install -y \
     openssl \
     git \
-    unzip
+    unzip \
+    libzip-dev \
+    libpng-dev
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
@@ -19,7 +21,7 @@ RUN pecl install apcu \
 && echo 'extension=apcu.so' > /usr/local/etc/php/conf.d/apcu.ini
 
 # Type docker-php-ext-install to see available extensions
-RUN docker-php-ext-install opcache pdo pdo_mysql
+RUN docker-php-ext-install zip gd opcache pdo pdo_mysql
 
 RUN echo 'expose_php=Off' >> /usr/local/etc/php/conf.d/additional.ini \
 && echo 'upload_max_filesize=10M' >> /usr/local/etc/php/conf.d/additional.ini \
