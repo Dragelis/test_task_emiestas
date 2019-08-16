@@ -1,7 +1,7 @@
 # Testinės užduoties sprendimas.
 
 ## Reikalavimai
-Reikalingi NodeJS (>=11.15.0), Yarn (>=1.17.3), Docker ir docker-compose programiniai paketai.
+Reikalingi NodeJS (>=11.15.0), Yarn (>=1.17.3), Docker ir docker-compose programiniai paketai. Projektui paleisti rekomenduojama **Debian** distribucija arba **OS X**.
 
 ## Diegimo instrukcija
 
