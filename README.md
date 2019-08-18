@@ -63,7 +63,7 @@ Reikalingi NodeJS (>=11.15.0), Yarn (>=1.17.3), Docker ir docker-compose program
 
   Sistema palaiko _CSV_ failų importavimą. Pavyzdinė failo struktūra:
 
-    ```csv
+    ```
     Participant,Opponent,Starts On,Winner
     Jonas,Jonaitis,2019-08-15 20:24,,
     Vardenis,Pavardenis,2019-09-04 12:25,,
