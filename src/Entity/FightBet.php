@@ -30,7 +30,7 @@ class FightBet
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="`option`", type="integer")
      * @Assert\Choice(choices=FightBet::OPTION_CHOICES, message="Choose a valid option.")
      */
     private $option;
