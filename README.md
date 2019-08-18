@@ -10,7 +10,7 @@ Reikalingi NodeJS (>=11.15.0), Yarn (>=1.17.3), Docker ir docker-compose program
 2. Sugeneruoti ir paleisti Docker konteinerius:
 
     ```bash
-    $ cd SYMFONY_APP_PATH
+    $ cd SYMFONY_APP_PATH # Kelias iki šio projekto.
     $ docker-compose build
     $ docker-compose up -d
     ```
@@ -37,15 +37,26 @@ Reikalingi NodeJS (>=11.15.0), Yarn (>=1.17.3), Docker ir docker-compose program
 5. Įdiegti reikalingas projekto JS bibliotekas:
 
     ```bash
-    $ cd SYMFONY_APP_PATH
+    $ cd SYMFONY_APP_PATH # Kelias iki šio projekto.
     $ yarn install
     ```
 
 6. Sugeneruoti projektui galutinius JS/CSS failus:
 
     ```bash
-    $ cd SYMFONY_APP_PATH
+    $ cd SYMFONY_APP_PATH # Kelias iki šio projekto.
     $ yarn encore production
     ```
 
 7. Apsilankyti [symfony.local](http://symfony.local) puslapyje.
+
+8. _(Neprivalomas)_ Norėdami prie sistemos pridėti administratorių pasinaudokite šiomis komandomis:
+
+    ```bash
+    $ docker-compose exec mysql bash
+    $ mysql -u symfony_test_user -p symfony_test
+    $ # Įveskite "symfony_test_password" (be kabučių).
+    $ UPDATE `user` SET `roles` = '["ROLE_ADMIN"]' WHERE `id` = 1; # 1 pakeiskite į norimo vartotojo ID.
+    $ exit
+    $ exit
+    ```
