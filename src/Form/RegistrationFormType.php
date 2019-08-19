@@ -44,13 +44,13 @@ class RegistrationFormType extends AbstractType
                         new NotBlank([
                             'message' => 'Please enter a password.'
                         ]),
-    
+
                         new Length([
                             'min' => 8,
                             'minMessage' => 'Your password should be at least {{ limit }} characters.',
                             'max' => 4096
                         ]),
-    
+
                         new NotCompromisedPassword()
                     ]
                 ],

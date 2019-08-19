@@ -16,7 +16,7 @@ class FightBet
 {
     public const OPTION_PARTICIPANT = 0;
     public const OPTION_OPPONENT = 1;
-    
+
     public const OPTION_CHOICES = [
         self::OPTION_PARTICIPANT,
         self::OPTION_OPPONENT

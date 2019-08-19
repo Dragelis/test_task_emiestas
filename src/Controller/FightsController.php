@@ -56,15 +56,13 @@ class FightsController extends AbstractController
             'paginator' => $paginator
         ]);
     }
-    
+
     /**
      * @Route("/fight/{id}/bets", defaults={"page": "1"}, methods={"GET"}, name="fight_bets", requirements={"id"="\d+"})
      * @Route("/fight/{id}/bets/page/{page}", methods={"GET"}, name="fight_bets_paginated", requirements={"id"="\d+","page"="[1-9]\d*"})
      */
-    public function bets (int $id, int $page, FightBetRepository $bets): Response {
-        $fight = $this->getDoctrine()
-            ->getRepository(Fight::class)
-            ->find($id);
+    public function bets (int $id, int $page, FightRepository $fights, FightBetRepository $bets): Response {
+        $fight = $fights->find($id);
 
         if (!$fight) {
             throw $this->createNotFoundException(
@@ -88,7 +86,7 @@ class FightsController extends AbstractController
      * @Route("/fight/{id}/bet/{option}", methods={"POST"}, name="fight_bet", requirements={"id"="\d+","option"="(0|1)"})
      * @IsGranted("ROLE_USER")
      */
-    public function bet(int $id, int $option, Request $request): Response
+    public function bet(int $id, int $option, Request $request, FightRepository $fights, FightBetRepository $bets): Response
     {
         $token = new CsrfToken('bet', $request->request->get('_csrf_token'));
 
@@ -96,9 +94,7 @@ class FightsController extends AbstractController
             throw new InvalidCsrfTokenException();
         }
 
-        $fight = $this->getDoctrine()
-            ->getRepository(Fight::class)
-            ->find($id);
+        $fight = $fights->find($id);
 
         if (!$fight) {
             throw $this->createNotFoundException(
@@ -114,13 +110,11 @@ class FightsController extends AbstractController
 
         $user = $this->getUser();
 
-        $bet = $this->getDoctrine()
-            ->getRepository(FightBet::class)
-            ->findOneBy([
-                'fight' => $fight,
-                'user' => $user
-            ]);
-        
+        $bet = $bets->findOneBy([
+            'fight' => $fight,
+            'user' => $user
+        ]);
+
         if ($bet) {
             $bet->setOption($option);
 
@@ -160,7 +154,7 @@ class FightsController extends AbstractController
      * @Route("/fight/{id}/status/{status}", methods={"POST"}, name="fight_status", requirements={"id"="\d+","status"="(created|started|ended)"})
      * @IsGranted("ROLE_ADMIN")
      */
-    public function status(int $id, string $status, Request $request): Response
+    public function status(int $id, string $status, Request $request, FightRepository $fights): Response
     {
         $token = new CsrfToken('admin', $request->request->get('_csrf_token'));
 
@@ -168,9 +162,7 @@ class FightsController extends AbstractController
             throw new InvalidCsrfTokenException();
         }
 
-        $fight = $this->getDoctrine()
-            ->getRepository(Fight::class)
-            ->find($id);
+        $fight = $fights->find($id);
 
         if (!$fight) {
             throw $this->createNotFoundException(
@@ -227,7 +219,7 @@ class FightsController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
 
         $entityManager->flush();
-        
+
         $this->addFlash('success', 'Fight status was updated successfully!');
 
         return $this->redirect($request->headers->get('referer'));
@@ -240,7 +232,7 @@ class FightsController extends AbstractController
     public function new(Request $request): Response
     {
         $fight = new Fight();
-        
+
         $form = $this->createForm(FightFormType::class, $fight);
         $form->handleRequest($request);
 
